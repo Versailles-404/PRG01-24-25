@@ -1,0 +1,67 @@
+Réponse aux exercices : Introduction
+
+Exercice 1:
+
+1. Inclusion de librairies utiles au projet
+Ici: iostream & cstdlib
+2. Dire quel famille d'instructions on utilise
+3. Fonciton principale, obligatoirement main().
+//!\\ Case sensitive.
+4. Brackets qui servent à definir quels instructions sont contenues dans la fonction.
+5. Instruction d'écrire sur la console "Hello World" en utilisant l'écriture du namespace std
+6. Utilisation de la fonction de la librairie cstdlib qui retourne un bool.
+-> fonction qui retourne le résultat du code contenu dans la fonction en déterminant si les instructions ont été exécutée ou non.
+
+Exercice 2:
+- analyse
+- écriture de code
+- éditions des liens
+- compilations
+- exécution
+
+Exercice 3:
+#include iostream
+#include cstdlib
+#using namespace std;
+
+int main(){
+
+	cout << "Hello" << endl;
+	return EXIT_SUCCESS;
+}
+
+Exercice 4:
+#include <iostream>
+using namespace std;
+
+int main(){
+   int p = 42;
+   cout << "hello" + p << endl;
+}
+
+Exercice 5: 
+#include <array>
+using namespace std:
+
+int main() {
+   array a { 1, 2, 3};
+   for(int i = 0; i < 10; ++i)
+      a.at(i) = i;
+   cout << "hello" << endl;
+}
+
+S'arrête à 3, car une fois le 3 atteint, le a.at(i) ne peut plus fonctionner.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
