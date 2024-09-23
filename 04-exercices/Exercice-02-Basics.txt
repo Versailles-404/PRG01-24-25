@@ -1,0 +1,412 @@
+Exercice 2:
+
+# Déclaration de variables
+Pour chaque séquence d'instructions suivante, déterminez si elle est correcte ou pas : 
+- Si oui, donnez la valeur de la variable au terme de la séquence.
+- Sinon, expliquez pourquoi la séquence n'est pas correcte.
+
+1. 
+   ~~~cpp
+    int n = 1;
+    n = 1 – 2 * n;
+    n = n + 1;
+   ~~~
+0
+
+2.  
+    ~~~cpp
+    int n = 1;
+    n = n + 1;
+    int n = 1 – 2 * n;
+    ~~~
+-2
+
+3. 
+    ~~~cpp
+    int n = 1, p = 2;
+    n = (n + 1) * (n - k);
+    ~~~
+
+il manque la décla du k
+
+4. 
+    ~~~cpp
+    int n, m = 0;
+    n = 2 * n - 1;
+    m = n + 1;
+    ~~~
+
+n pas déclaré
+
+ 5. 
+    ~~~cpp
+    int n = 5, m = 0;
+    const int nb_produit = 10;
+    m = n * nb_produit - 1;    
+    ~~~
+
+49
+
+ 6. 
+    ~~~cpp
+    int n = 5, m = 0;
+    const int nb_produit = 10;
+    m = n * nb_produit--;    
+    ~~~
+
+45
+
+Exercice 3
+
+|  #  | Déclaration | Type |
+| --- | -------------- | --------- |
+| 1 | `auto var1 = 10;` | int |
+| 2 | `auto var2 = 1.;`  | float |
+| 3 | `auto var3 = '1';`  | int |
+| 4 | `auto var4 = 0.5;` | float |
+| 5 | `auto var5 = 'r';` | char |
+| 6 | `auto var6 = true;` | bool |
+| 7 | `auto var7 = 25.0;` | float |
+| 8 | `auto var8 = 3;` | int |
+| 9 | `auto var9 = var1 / var8;` | double |
+| 10 | `auto var10 = var1 / var4;` | double |
+
+Exercice 4
+
+Que va afficher le programme C++ suivant ?
+
+~~~cpp
+int i, j, k;
+
+i = 0; k = i++;
+cout << "A : i = " << i << " k = " << k << endl;
+
+i = 1; k = ++i;
+cout << "B : i = " << i << " k = " << k << endl;
+
+i = 2; j = 3;
+k = i++ * ++j;
+cout << "C : i = " << i << " j = " << j << " k = " << k << endl;
+
+i = 3; j = 4;
+k = i *= --j;
+cout << "D : i = " << i << " j = " << j << " k = " << k << endl;
+
+A : i = 0 0 k = 1
+B : i = 1 k = 2
+C : i = 2 j = 3 k = 3
+D : i = 3 j = 4 k = 3
+
+Exercice 5
+
+Soient les déclarations suivantes :
+
+~~~cpp
+int i = 5, j = 11;
+double x = 5, y = 11;
+
+double m = 0;
+~~~
+
+Que vaut la variable m dans chacun des cas ci-dessous ?
+
+| # | Expression           |  m  |
+|---| ---------------------|-----|
+| 1 | `m = j / i;`         |  2.2  |
+| 2 | `m = y / x;`         |  2.2  |
+| 3 | `m = j / i + 1.0;`   |  3.2  |
+| 4 | `m = y / x + 1;`     |  3.2  |
+| 5 | `m = y / x + j / i;` |  4.4  |
+| 6 | `m = i + y / x;`     |  7.2  |
+| 7 | `m = x + j / i;`     |  7.2  |
+
+Exercice 6
+
+int i = 5, j = 11, n = 10;
+double x = 5, y = 11;
+~~~
+
+Quel est le résultat d'évaluation des expressions suivantes ? en cas d'erreur, indiquez la raison.
+
+| # | Expréssion | Résultat |
+|---| ---------- |---|
+| 1 | `j % i` | |
+| 2 | `n % i`  | |
+| 3 | `y % x`  | |
+| 4 | `y % i` | |
+| 5 | `-j % i` | |
+| 6 | `n % ++i` | |
+| 7 | `n++ % ++i` | |
+
+Exercice 7
+
+~~~cpp
+#include <cstdlib>
+#include <iostream>
+using namespace std;
+
+int main() {
+
+   int i, j, k;
+
+   i = j = k = 1;
+   i += j += k;
+   cout << "A : i = " << i << " j = " << j << " k = " << k << endl;
+
+   i = 3; j = 2;
+   k = i++ > j || j++ != 3;
+   cout << "B : i = " << i << " j = " << j << " k = " << k << endl;
+   
+   i = 3; j = 2;
+   k = i++ < j || j++ != 3;
+   cout << "C : i = " << i << " j = " << j << " k = " << k << endl;
+
+   i = 3; j = 2;
+   k = ++i == 3 && ++j == 3;
+   cout << "D : i = " << i << " j = " << j << " k = " << k << endl;
+
+   i = 3; j = 2;
+   k = ++i > 3 && ++j == 3;
+   cout << "E : i = " << i << " j = " << j << " k = " << k << endl;
+     
+   return EXIT_SUCCESS;
+}
+
+A : i = 1 j = 1 k = 1
+B : i = 4 j = 2 k = 4
+C : i = 3 j = 2 k = 4
+D : i = 3 j = 2 k = x - this is shit.
+E : i = 3 j = 2 k = 3
+
+Exercice 8
+
+string s1 = "prg1";
+string s2 = "prg2";
+string s3 = "pdl";
+string s4 = "prg";
+string s5 = "pdg23";
+string s6 = "Prg1";
+~~~
+
+Quel est le résultat d'évaluation des expressions suivantes ? Expliquez votre réponse.
+
+Pour rappel, `' ' < '0' < '9' < 'A' < 'Z' < 'a' < 'z'`
+
+| # | Expréssion | Résultat (true/false) | Explication |
+|---| ---------- | --------------------- | ----------- |
+| 1 | `s1 < s2` | true | la seule dif. c'est le chiffre qui correspond au signe selon le contenu du string|
+| 2 | `s1 > s3`  | | |
+| 3 | `s1 < s4`  | false | manque le chiffre donc c'est l'inverse|
+| 4 | `s3 > s5` | false | d vient avant r |
+| 5 | `s1 > s6` | true | Maj. > min. |
+
+Exercice 9
+
+On suppose disposer de deux entiers x et y.
+Ecrire la condition permettant de tester :
+
+1.	que nos deux entiers valent 0
+2.	qu'au moins l'un de nos deux entiers vaut 0
+3.	qu'un seul de nos deux entiers vaut 0
+4.	qu'au moins un de nos deux entiers ne vaut pas 0
+
+if( x == 0 || y == 0 && x > 0 || y > 0)
+
+
+Exercice 10
+
+Que va afficher le programme C++ suivant ?
+
+~~~cpp
+char x = 'A'; // 65
+char y = '0'; // 48
+char z;
+
+z = x + 4;
+cout << "1. " << z << endl;
+cout << "2. " << ++z << endl;
+
+z = x + 0;
+cout << "3. " << z << endl;
+
+z = x + '0';
+cout << "4. " << z << endl;
+~~~
+
+1. 69
+2. 1
+3. 69
+4. 117
+
+Exercice 11
+
+Indiquer la valeur de la variable `s` après chacune des séquences d'instructions suivantes : (si erreur, indiquez la)
+
+
+1. 
+~~~cpp
+string s = string("A") + "BC";
+~~~
+"ABC"
+2. 
+~~~cpp
+string s = string("AB") + 'C';
+~~~
+"ABC"
+3.
+~~~cpp
+string s = "A" + "BC";
+~~~
+"ABC"
+4. WTF
+~~~cpp
+string s = "AB";
+s += 'C';
+~~~
+"ABC"
+5. 
+~~~cpp
+string s = "AB";
+string ss = s + 5;
+~~~
+5 is not bet. "" can't concat.
+6. 
+~~~cpp
+string s = "PRG";
+string s1 = "2023-01-01";
+s += s1[4]; 
+s += s1[6];
+~~~
+PRG-1
+
+Exercice 12
+
+Comme illustré ci-dessous, la forme d'une bouteille peut s'approximer par deux cylindres, de rayons r1 et r2 et de hauteurs h1 et h2, joints par un cône tronqué de hauteur h3.
+
+Ecrire un programme C++ qui, après avoir demandé à l'utilisateur de saisir (en centimètres) les cinq paramètres ci-dessus, calcule puis affiche la contenance en litres de la bouteille.
+
+![bouteille](assets/03-10_bouteille.jpg)
+
+**Volume d'un cylindre**
+$$\pi * r^2 * h$$
+
+**Volume d'un cône tronqué**
+$$(r1^2 + r2^2 + r1 * r2) * h * \pi / 3$$
+
+Exemple d'exécution :
+~~~
+Entrez le rayon du cylindre 1 [cm]      : 4
+Entrez le rayon du cylindre 2 [cm]      : 1
+Entrez la hauteur du cylindre 1 [cm]    : 12
+Entrez la hauteur du cylindre 2 [cm]    : 1
+Entrez la hauteur du tronc de cone [cm] : 3
+
+La contenance de la bouteille est de 0.67196 litre.
+
+Exercice 13
+
+Ecrire un programme C++ permettant de réaliser les trois conversions d'unités suivantes :
+- mètres en miles
+- mètres en pieds (feet en anglais)
+- mètres en pouces (inches en anglais).
+  
+Le nombre de mètres est saisi par l'utilisateur sous la forme d'un entier > 0. On suppose ladite saisie correcte.
+
+Un exemple d'exécution :
+~~~
+Entrez le nombre de metres a convertir (entier > 0) : 1000
+1000 [m]
+= 0.621371 [mile]
+= 3280.84 [ft]
+= 39370.1 [inch]
+
+Exercice 14
+
+int i = 5;
+const int j = 10;
+
+int* ptr_i = &i;
+const int* ptr_j = &j;
+
+const int* ptr_i_1 = &i;
+int* const ptr_i_2 = &i;
+~~~
+
+- Indiquez si les instructions suivantes sont correctes ou pas (génère une erreur) ? 
+- Expliquez votre réponse, 
+- Quelle serait la valeur de i et j si l'instruction est exécutée.
+
+
+| # | Instruction | Correcte ? (oui/non) | Explication | i, j |
+|---| ---------- | --------------------- | ----------- | --- |
+| 1 | `*ptr_i = 15;` | | | |
+| 2 | `int *ptr_j_1 = &j;`  | | | |
+| 3 | `ptr_j = ptr_i;`  | | | |
+| 4 | `*ptr_i_1 = 25;` | | | |
+| 5 | `*ptr_i_2 = 30;` | | | |
+| 6 | `ptr_i_1 = &j;` | | | |
+| 7 | `ptr_i_2 = &j;` | | | |
+
+Exercice 15
+
+Coder en C++ les questions suivantes.
+
+**NB** : les instructions sont dépendantes les unes des autres
+
+1) Créer une variable `var1` initialisée 1
+
+int var1 = 1;
+
+2) Créer une variable `var2` initialisée 2
+
+int var2 = 2;
+
+3) Créer une constante `cste` initialisée 3
+
+const int CSTE = 3;
+
+4) Créer un pointeur non constant `ptr1` non initialisé
+
+5) Créer un pointeur non constant `ptr2` pointant sur `var2`
+
+6) Faire pointer `ptr1` sur `var1`
+
+7) Modifier la valeur pointée par `ptr1` à 2
+
+8) Afficher "oui" ou "non" selon si `ptr1` et `ptr2` pointent sur la même variable.</br>Ne pas utiliser de `if`
+
+9) Afficher "oui" ou "non" selon si `ptr1` et `ptr2` pointent sur une valeur identique.</br>Ne pas utiliser de `if`
+
+10) Afficher l'addresse où se trouve `var1`
+
+11) Afficher le contenu de `ptr1`</br>
+Que peut-on dire de cette valeur ?
+
+12) Afficher l'addresse où se trouve `ptr1`
+
+13) Faire pointer `ptr1` sur `cste`
+
+14) Déclarer un pointer non constant `ptr3` sur `cste`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
