@@ -11,3 +11,113 @@ Décla required pour avoir SA place selon SA taille pour booké la bonne place �
 -------------- 
 Mémoire == petit bout de 8 octet (un bit) agloméré
 Réf - cours M. Deschamps
+_______________________________________
+23.09.2024
+
+SUITE VARIABLES
+Address format -> 0x0004 (for ex.)
+Certains type heavier than some others
+-> ex: byte vs. int
+Best way is the random way. So we don't choose some that are used.
+-------------- 
+cin = command in (?) lecture d'info sur la console
+literal constant (6 par ex.) truc qui est déjà dans la mémoire, il va juste le lire
+-------------- 
+3 way to décla var (all the same)
+init like C -> int age =6;
+init by construct. -> int age (6);
+init. uniform -> int age{6}
+-> since C++11
+
+Must décla the var, the nearest of where used
+-> is alive a short amount of time
+-> the nearest declared so it is used only for the time needed.
+(very useful for embarqué)
+Sometimes she needs to survive so we should declare it elsewhere then above
+The longest it is used, the more explicit and complete the var name can be
+-------------- 
+id name 
+-> can't start with a nb
+-> need to start with a letter or a _
+-> no - (lil shit looking like a _)
+-> no shiny carac.
+-> no space.
+-------------- 
+VARIABLES CONSTANTES
+
+init. is mandatory when declared
+const int -> constante
+Helps to dodge magic nb
+
+-------------- 
+TYPES DE BASES
+
+Static and explicit
+auto -> the compil will try to guess
+Types:
+- defined
+> how stocked
+> op. possible w/
+
+- fundamental
+> char (carac. typo) only 8 bits 
+-> ascii table associated w/
+-> signed -> ful tab
+-> not signed -> only + 
+-> better unsigned bcs better copy+paste of the tab
+> string 
+-> is a class 
+-> mention honorifique bcs isn't a base type
+-> not the case for random shit if we random point by not init. it
+-> will stay empty
+> int
+> byte
+> double(more precise than float) - float
+> bool
+-------------- 
+OPÉRATIONS
+
+Litéral constant
+- un carac. ''
+- chain carac. ""
+- int
+- double/float
+Lives there, is read only
+
+lvalue = localisation value
+- left (int age)
+- réf to a memory address
+- address is accessible by the prog.
+
+rvalue = result value
+- right (6)
+- not a memory address réf.
+
+Affectations = copie de la valeur de l'exp. à la droite 
+(et pas inversément. on met pas la charue avant les boeufs !)
+-> int age = 10 
+on va attribuer le 10 à age qui en porte sa copie pour l'avoir à cet emplacement de mémoire
+
+Arithmétique doubles
+-> + - * double == classical shit behavior
+-> + - * int == same as bool
+-> / will yeet the fuck it out of the post ,
+-> % unlike /, will fucking keep the remaining of the div.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
