@@ -1,0 +1,30 @@
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+using namespace std;
+
+int main() {
+    const int LITRE = 1000;
+    double rayonCylindre1, hauteurCylindre1, rayonCylindre2, hauteurCylindre2, hauteurTronc, aireCylindre1, aireCylindre2, aireCylindreTron, resultatBouteille;
+    string nbLitre = "litre";
+
+    cout << "Entrez le rayon du cylindre 1 [cm] : " << endl;
+    cin>>rayonCylindre1;
+    cout << "Entrez la hauteur du cylindre 1 [cm] : " << endl;
+    cin>>hauteurCylindre1;
+    cout << "Entrez le rayon du cylindre 2 [cm] : " << endl;
+    cin>>rayonCylindre2;
+    cout << "Entrez la hauteur du cylindre 2 [cm] : " << endl;
+    cin>>hauteurCylindre2;
+    cout << "Entrez la hauteur du tronc de cone [cm] : " << endl;
+    cin>>hauteurTronc;
+    aireCylindre1 = rayonCylindre1 * hauteurCylindre1 * M_PI;
+    aireCylindre2 = rayonCylindre2 * hauteurCylindre2 * M_PI;
+    aireCylindreTron = (((rayonCylindre1*rayonCylindre1)+(rayonCylindre2*rayonCylindre2)+(rayonCylindre1*rayonCylindre2))*hauteurTronc*M_PI)/3;
+    resultatBouteille = (aireCylindre1 + aireCylindre2 + aireCylindreTron)/LITRE;
+    if(resultatBouteille>=2.0)
+        nbLitre += 's';
+    cout << "La contenance de la bouteille est de " << resultatBouteille << " " << nbLitre << "." << endl;
+
+    return 0;
+}

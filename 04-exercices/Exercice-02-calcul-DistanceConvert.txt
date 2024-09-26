@@ -1,0 +1,35 @@
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+using namespace std;
+
+int main() {
+    const double MILE = 0.621371, FEET = 3280.84, INCH = 39370.1;
+    int userChoice;
+    double userNB, resultatConvert;
+    string mesureMile = "mile";
+    string mesureFeet = "feet";
+    string mesureInch = "inch";
+
+    cout << "Choisissez l'unite de conversion en entrant son numero:"  << endl;
+    cout << "(1-mile, 2-feet, 3-inch)" << endl;
+    cin>> userChoice;
+    cout << "Entrez le nombre de metres a convertir (minimum : 1000) : " << endl;
+    cin>> userNB;
+    switch (userChoice) {
+        case 1:
+            resultatConvert = userNB*MILE;
+            cout << (resultatConvert <1.0 ? mesureMile += 's' : );
+            cout << "Cela equivaut a " << resultatConvert << " " << mesureMile << "." << endl;
+        case 2:
+            resultatConvert = userNB*FEET;
+            cout << (resultatConvert <1.0 ? mesureFeet += 's');
+            cout << "Cela equivaut a " << resultatConvert << " " << mesureFeet << "." << endl;
+        case 3:
+            resultatConvert = userNB*INCH;
+            cout << (resultatConvert <1.0 ? mesureInch += 's' : mesureInch);
+            cout << "Cela equivaut a " << resultatConvert << " " << mesureInch << "." << endl;
+    }
+
+    return 0;
+}
