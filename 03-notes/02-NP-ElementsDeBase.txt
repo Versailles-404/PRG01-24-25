@@ -103,6 +103,127 @@ Arithmétique doubles
 -> + - * int == same as bool
 -> / will yeet the fuck it out of the post ,
 -> % unlike /, will fucking keep the remaining of the div.
+_______________________________________
+24.09.2024
+
+SUITE
+
+Modulo use case
+-> RSA
+-> compteur cyclique
+-> 
+--------------
+OPÉRATEUR D'AFFECTATIONS
++=  -=  *=  %=
+Combine opéra. d'arithmétique et d'affectations
+--------------
+INCRÉMENT-DÉCRÉMENT
+++  --
+
+préfixe-suffixe
+will incr. before if préfix
+will incr. after if suffix
+(check p.35 for ex)
+--------------
+OPÉRATEURS DE COMPARAISONS
+<  >  <=  >=  ==  !=
+Can compare -> int, double, float, char, string
+-> return bool
+
+If string compared -> lexicographique
+Classic compa. then when 1st diff. -> compa. their ASCII nb
+-> then classic nb compa.
+--------------
+OPÉRATEURS DE COMPARAISONS TILATÉRALE
+Spaceship
+
+A<=>B -> déter. si A<B, A==B ou A>B in 1 opé.
+
+(A <=> B) < 0
+(A <=> B) > 0
+(A <=> B) == 0
+
+Ex:
+const int x = 5, y = 3;
+
+cout << ((x <=> y) < 0); // affiche 0 (false) car x > y
+1st smaller than 2nd
+
+cout << ((x <=> y) > 0); // affiche 1 (true) car x > y
+1st bigger than 2nd
+cout << ((x <=> y) == 0); // affiche 0 (false) car x != y
+x == y
+
+=> transpose the <>= instead of the spaceship
+
+SURCHARGE D'OPÉRATEURS
+-> fonctions qui défini son comportement
+-> apprendre à un * à multi. des string par ex.
+--------------
+OPÉRATEURS LOGIQUES
+
+not ! - or || - and &&
+
+From L to R and stops asap
+a && b -> éval. a 1st no éval. of b if a false
+a || b -> éval. a 1st, no éval of b if a true
+-> allows to write w/out risks to do a 0/div
+
+Border effect -> of non éval of the right term
+--------------
+LOI DE MORGAN (the pute)
+
+!(A && B) == (!A || !B)
+!(A || B) == (!A && !B)
+--------------
+OPÉRATIONS SUR CHAR
+
+char stock ASCII int of it
+-> use the ASCII nb to do the opé.
+--------------
+STRING - CONCAT. -> +
+
+= "Hello world" -> chaîne de char == char tab
+= string("Hello world") -> objet
+
+Can't do "Hello" + "world" -> + de 2 tab de char
+if s put at the end -> promo of it into string
+-> then we can concat.
+
+No concat' with string + int
+Nor  char + char
+
+Can't acces to a specific char with a [6] for example in a string
+Bcs string is a char tab
+--------------
+POINTEURS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
