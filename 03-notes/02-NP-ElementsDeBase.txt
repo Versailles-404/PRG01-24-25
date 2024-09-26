@@ -195,14 +195,85 @@ Nor  char + char
 
 Can't acces to a specific char with a [6] for example in a string
 Bcs string is a char tab
---------------
+_____________________________
 POINTEURS
 
+What is it -> 
+u fucking got a building. ppl in each appart (smol case)
+when u wanna know smth someone from there know. U must know where the bitch is. They have a name, so you call them. They answer you.
+"THÉODORE what the f do you know ?"
+-> "
+You can tell them smth and they will remember and you can tell them to forget.
+And u can have a block of buildings and then a city, then a county, country, continent, planet, etc...
+-------------- 
+26.09.2024
 
+int x = 5;
+-> if &x
+& récup. address of the var.
 
+* -> *(x&)
+-> déréférencement
+right in w/r on the address content
+To réattr. the address to smth else
+-> *(&x) = 10 know contains the 10 instead of the 5
+// ! \\ Attention si on réattr. shit d'un autre type, faut caster ! (FIREBAAAALL !!!)
 
+ptr -> var w/ address from another var
+-ggl maps préhistorique de la mémoire
 
+type de pointeur décla adding * post type pointé
+when change of content of a ptr, 
 
+"wsh Théodore, il est où Bobby ?"
+-> Bobby sait un chiffre
+"wsh Théodore, maintenant Jack ?"
+etc...
+
+ptr w/ const -> ptr_vers_const
+const int x= 5; val not modifiable
+int * ptr = &x; ERROR
+const int* ptr_vers_const = &x;
+
+ptr_vers_const
+const int* ptr -> no modif through ptr
+read only
+Contract of no modif of the var contenu in address
+
+un ptr qui ne peut pas pointer sur un autre truc == USELESS
+(bah chômage hein)
+Pas si useless mais QUE dans certains cas ! surtout avec les fonctions
+
+ptr can be void -> point on unknown shit for it
+good for cast ! very powerful to create struct.
+
+FONCTIONS
+
+work on copy of the var
+-> to modif' the var, give the ptr
+-------------- 
+PRIO DES OPÉ
+
+Classic prio
+if same lvl -> read from left to right
+if not, left to right but with the highest lvl
+
+Priorité Opérateurs Description Associativité
+1  →  a++, a--, a[], … unaires postfixes gauche à droite →
+2  ←  ++a, --a, +a, -a, !a, *a, &a, … unaires préfixes droite à gauche ←
+3  →  a*b, a/b, a%b multiplicatifs gauche à droite →
+4  →  a+b, a-b additifs
+5  →  <<, >> Lecture et affichage
+6  →  <=> spaceship
+7  →  <, <=, >, >= comparaison
+8  →  ==, != (in)égalité
+9  →  &&, and ET logique
+10 → ||, or OU logique
+11 ← =, +=, -=, *=, /=, %= affectations droite à gauche ←
+
+OPÉ TERNAIRE
+
+cout << (ptr1 == ptr2 ? "oui" : "non"); -> if
 
 
 
