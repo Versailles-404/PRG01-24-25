@@ -1,0 +1,132 @@
+30.09.2024
+
+Bloc de code pour former une instruc. composé
+{} only required
+Décla can have its own décla. de var.
+
+Var décla in bloc != visible outside of it
+
+Bloc imbriqué
+Works as one instruc.
+Can include other blocs
+Indentation ignored par le compil. only helps the stoopid hooman goblin
+Si var have same name in bloc imbriqué, only the most imbriquée visible
+-> masque les autres
+
+:: -> to recup var global
+
+Flux d'entrée -> lecteur du clavier
+---------------
+IF … ELSE
+
+else if possible
+if(x<0){
+
+}
+else if ( x == 0) {
+
+}
+else{
+
+}
+---------------
+?
+See msg de Chris
+
+id what's common first, then condition then what it returns
+
+if(a<0)
+{
+b+= a;
+} else{
+b-=2*a;
+}
+
+b+= a>0 ? a : +2*a
+
+if(a>0)
+{
+b+=1;
+}else if(a==0){
+b=0;
+}else{
+b*=2;
+}
+
+b=a>0 ? b+1 : (a == 0 ? 0 : 2*b)
+
+---------------
+SWITCH
+-> break et fallthrough
+
+Only == can't < or >
+
+Ordre des cases et default: belec for syntax
+But for logic changes everything
+Si default
+-> vérif. default
+Si rien rien -> belec du truc
+
+Si no break -> will exe everything will not care abt the thing
+-> fall through
+
+
+
+enum type
+->
+
+---------------
+IF CONSTEXPR
+
+condition ré-évaluable
+
+_____________________________________________
+
+BOUCLES
+
+int i = 4;
+While(i != 4)
+{
+cout << --i;
+}
+3210
+
+--------------------
+LABO 02 -> deadline 04.10.2024
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
