@@ -1,0 +1,56 @@
+input of the hooman-> int userInput;
+(ex: 42)
+
+do(
+	for(int i = 1; userInput>i; i--){
+	var = i*i-1...
+	
+	if(userInput/var == 1 )
+	{
+	
+	}
+}
+while()
+
+--n jusqu'à trouver de quoi enlever au total du userInput
+if found -> userInput - shittyNbFound
+-> new userInput == son reste.
+else -> keep going
+--------------------------
+
+
+
+
+
+
+
+
+le user entre un nombre userNb
+
+boucle for qui s'incrémente avec la var incrément, tant que bool == true
+le bool sert à vérifier si le nb factoriel rentre dans le userNB
+
+
+if reste inférieur à userNB bool == true
+else bool == false
+-> take --incrément car c'est le factoriel recherché
+
+donc userNb/reste = resultNB;
+
+varStockageResult += resultNB;
+
+
+
+
+
+
+
+--------------------------
+42 factoriel le plus grand ->
+4! -> 24 Good !
+x >= 42
+5! -> 120 TROP
+
+42/24 = 1
+-> reste == 18
+re-used for la suite
