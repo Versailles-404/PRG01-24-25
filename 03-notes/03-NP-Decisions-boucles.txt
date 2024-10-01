@@ -79,25 +79,63 @@ enum type
 IF CONSTEXPR
 
 condition ré-évaluable
-
 _____________________________________________
+01.10.2024
 
 BOUCLES
 
+WHILE
+
+{init; while(condition) {instructions; actions;}}
+
+exemple
 int i = 4;
-While(i != 4)
+while(i != 4)
 {
 cout << --i;
 }
 3210
 
---------------------
-LABO 02 -> deadline 04.10.2024
+if condition never true -> never goes into he while
+---------------
+FOR
+
+for(init.; condition; action){
+}
+all optional
+-
+
+int i = 0 -> temporaire, only in the for, not outside
 
 
+-> parcourir un intervalle [a;b[
+(Tester-Init-Incrém.
+-> groups it in 1 & ++ lisible
+---------------
+DO-WHILE
 
+do instruction/s répétée/s; while (condition)
 
+si condition du while fausse, -> fall through
+---------------
+Debugging
+-> suivi manuel
+-> debugger
+-> point d'arrêt
 
+---------------
+Boucles imbriquées
+-> parse tableaux en 2D
+the more imbriqued loop, the more dimension for the tab
+
+on peut utilisé la , pour ajouter des actions, init. et conditions
+
+---------------
+SAUTS
+
+break;
+continue;
+goto ETIQUETTE:
 
 
 
