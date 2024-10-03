@@ -1,40 +1,39 @@
-30.09.2024
+# 30.09.2024
 
-Bloc de code pour former une instruc. composé
-{} only required
-Décla can have its own décla. de var.
+Bloc de code pour former une instruc. composé\
+{} only required\
+Décla can have its own décla. de var.\
 
 Var décla in bloc != visible outside of it
 
-Bloc imbriqué
-Works as one instruc.
-Can include other blocs
-Indentation ignored par le compil. only helps the stoopid hooman goblin
-Si var have same name in bloc imbriqué, only the most imbriquée visible
--> masque les autres
+*Bloc imbriqué*\
+Works as one instruc.\
+Can include other blocs\
+Indentation ignored par le compil. only helps the stoopid hooman goblin\
+Si var have same name in bloc imbriqué, only the most imbriquée visible\
+-> masque les autres\
 
-:: -> to recup var global
+:: -> to recup var global\
 
-Flux d'entrée -> lecteur du clavier
----------------
-IF … ELSE
+Flux d'entrée -> lecteur du clavier\
 
+## If … Else
+
+```
 else if possible
 if(x<0){
-
 }
 else if ( x == 0) {
-
 }
 else{
-
 }
----------------
+```
+
 ?
 See msg de Chris
 
 id what's common first, then condition then what it returns
-
+```
 if(a<0)
 {
 b+= a;
@@ -54,9 +53,8 @@ b*=2;
 }
 
 b=a>0 ? b+1 : (a == 0 ? 0 : 2*b)
-
----------------
-SWITCH
+```
+## Switch
 -> break et fallthrough
 
 Only == can't < or >
@@ -75,35 +73,34 @@ Si no break -> will exe everything will not care abt the thing
 enum type
 ->
 
----------------
-IF CONSTEXPR
+## If constexpr
 
 condition ré-évaluable
-_____________________________________________
-01.10.2024
 
-BOUCLES
+# 01.10.2024
 
-WHILE
+# Boucles
+
+## While
 
 {init; while(condition) {instructions; actions;}}
 
 exemple
+```
 int i = 4;
-while(i != 4)
-{
+while(i != 4){
 cout << --i;
 }
-3210
+```
+    3210
 
 if condition never true -> never goes into he while
----------------
-FOR
 
-for(init.; condition; action){
-}
-all optional
--
+## For
+
+for(init.; condition; action){\
+}\
+all optional\
 
 int i = 0 -> temporaire, only in the for, not outside
 
@@ -111,31 +108,37 @@ int i = 0 -> temporaire, only in the for, not outside
 -> parcourir un intervalle [a;b[
 (Tester-Init-Incrém.
 -> groups it in 1 & ++ lisible
----------------
-DO-WHILE
 
-do instruction/s répétée/s; while (condition)
+## Do-While
 
-si condition du while fausse, -> fall through
----------------
-Debugging
--> suivi manuel
--> debugger
+do instruction/s répétée/s; while (condition)\
+si condition du while fausse, -> fall through\
+
+**Debugging**\
+-> suivi manuel\
+-> debugger\
 -> point d'arrêt
 
 ---------------
-Boucles imbriquées
--> parse tableaux en 2D
+**Boucles imbriquées**\
+-> parse tableaux en 2D\
 the more imbriqued loop, the more dimension for the tab
 
 on peut utilisé la , pour ajouter des actions, init. et conditions
 
----------------
-SAUTS
+## SAUTS
 
-break;
-continue;
+break;\
+continue;\
 goto ETIQUETTE:
+
+
+
+
+
+
+
+
 
 
 

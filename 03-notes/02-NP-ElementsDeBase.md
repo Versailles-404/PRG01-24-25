@@ -1,28 +1,28 @@
-19.09.2024
+# 19.09.2024
 
-VARIABLES
+## VARIABLES
 Décla. de cont. indeter. -> possible mais pas ouf
 Si pas init. == undefined. pas zéro. Juste mémoire pur. (on laisse le truc tel quel et tu te démerde avec ce que tu trouves lol. Pas prédictible. Mais pas true rand.)
 Décla. de cont. Init. -> good 
 Permets un follow-up du contenu (et pour clean le truc une fois qu'on en a plus besoin ?)
---------------
+
 Décla required pour avoir SA place selon SA taille pour booké la bonne place à la bonne taille
 -> chacun son adresse, je vis pas chez le voisin quoi et si j'ai 3 gosses, ça fit peut-être pas son endroit…
--------------- 
+
 Mémoire == petit bout de 8 octet (un bit) agloméré
 Réf - cours M. Deschamps
-_______________________________________
-23.09.2024
 
-SUITE VARIABLES
+# 23.09.2024
+
+## SUITE VARIABLES
 Address format -> 0x0004 (for ex.)
 Certains type heavier than some others
 -> ex: byte vs. int
 Best way is the random way. So we don't choose some that are used.
--------------- 
+
 cin = command in (?) lecture d'info sur la console
 literal constant (6 par ex.) truc qui est déjà dans la mémoire, il va juste le lire
--------------- 
+
 3 way to décla var (all the same)
 init like C -> int age =6;
 init by construct. -> int age (6);
@@ -35,22 +35,21 @@ Must décla the var, the nearest of where used
 (very useful for embarqué)
 Sometimes she needs to survive so we should declare it elsewhere then above
 The longest it is used, the more explicit and complete the var name can be
--------------- 
+
 id name 
 -> can't start with a nb
 -> need to start with a letter or a _
 -> no - (lil shit looking like a _)
 -> no shiny carac.
 -> no space.
--------------- 
-VARIABLES CONSTANTES
+
+## VARIABLES CONSTANTES
 
 init. is mandatory when declared
 const int -> constante
 Helps to dodge magic nb
 
--------------- 
-TYPES DE BASES
+## TYPES DE BASES
 
 Static and explicit
 auto -> the compil will try to guess
@@ -74,8 +73,8 @@ Types:
 > byte
 > double(more precise than float) - float
 > bool
--------------- 
-OPÉRATIONS
+
+## OPÉRATIONS
 
 Litéral constant
 - un carac. ''
@@ -103,29 +102,29 @@ Arithmétique doubles
 -> + - * int == same as bool
 -> / will yeet the fuck it out of the post ,
 -> % unlike /, will fucking keep the remaining of the div.
-_______________________________________
-24.09.2024
 
-SUITE
+# 24.09.2024
+
+# SUITE
 
 Modulo use case
 -> RSA
 -> compteur cyclique
 -> 
---------------
-OPÉRATEUR D'AFFECTATIONS
+
+## OPÉRATEUR D'AFFECTATIONS
 +=  -=  *=  %=
 Combine opéra. d'arithmétique et d'affectations
---------------
-INCRÉMENT-DÉCRÉMENT
+
+## INCRÉMENT-DÉCRÉMENT
 ++  --
 
 préfixe-suffixe
 will incr. before if préfix
 will incr. after if suffix
 (check p.35 for ex)
---------------
-OPÉRATEURS DE COMPARAISONS
+
+## OPÉRATEURS DE COMPARAISONS
 <  >  <=  >=  ==  !=
 Can compare -> int, double, float, char, string
 -> return bool
@@ -133,8 +132,8 @@ Can compare -> int, double, float, char, string
 If string compared -> lexicographique
 Classic compa. then when 1st diff. -> compa. their ASCII nb
 -> then classic nb compa.
---------------
-OPÉRATEURS DE COMPARAISONS TILATÉRALE
+
+## OPÉRATEURS DE COMPARAISONS TILATÉRALE
 Spaceship
 
 A<=>B -> déter. si A<B, A==B ou A>B in 1 opé.
@@ -156,11 +155,11 @@ x == y
 
 => transpose the <>= instead of the spaceship
 
-SURCHARGE D'OPÉRATEURS
+## SURCHARGE D'OPÉRATEURS
 -> fonctions qui défini son comportement
 -> apprendre à un * à multi. des string par ex.
---------------
-OPÉRATEURS LOGIQUES
+
+## OPÉRATEURS LOGIQUES
 
 not ! - or || - and &&
 
@@ -170,18 +169,18 @@ a || b -> éval. a 1st, no éval of b if a true
 -> allows to write w/out risks to do a 0/div
 
 Border effect -> of non éval of the right term
---------------
-LOI DE MORGAN (the pute)
+
+## LOI DE MORGAN (the pute)
 
 !(A && B) == (!A || !B)
 !(A || B) == (!A && !B)
---------------
-OPÉRATIONS SUR CHAR
+
+## OPÉRATIONS SUR CHAR
 
 char stock ASCII int of it
 -> use the ASCII nb to do the opé.
---------------
-STRING - CONCAT. -> +
+
+## STRING - CONCAT. -> +
 
 = "Hello world" -> chaîne de char == char tab
 = string("Hello world") -> objet
@@ -195,8 +194,8 @@ Nor  char + char
 
 Can't acces to a specific char with a [6] for example in a string
 Bcs string is a char tab
-_____________________________
-POINTEURS
+
+## POINTEURS
 
 What is it -> 
 u fucking got a building. ppl in each appart (smol case)
@@ -205,8 +204,8 @@ when u wanna know smth someone from there know. U must know where the bitch is. 
 -> "
 You can tell them smth and they will remember and you can tell them to forget.
 And u can have a block of buildings and then a city, then a county, country, continent, planet, etc...
--------------- 
-26.09.2024
+
+# 26.09.2024
 
 int x = 5;
 -> if &x
@@ -217,7 +216,7 @@ int x = 5;
 right in w/r on the address content
 To réattr. the address to smth else
 -> *(&x) = 10 know contains the 10 instead of the 5
-// ! \\ Attention si on réattr. shit d'un autre type, faut caster ! (FIREBAAAALL !!!)
+// ! \ \ Attention si on réattr. shit d'un autre type, faut caster ! (FIREBAAAALL !!!)
 
 ptr -> var w/ address from another var
 -ggl maps préhistorique de la mémoire
@@ -247,12 +246,12 @@ Pas si useless mais QUE dans certains cas ! surtout avec les fonctions
 ptr can be void -> point on unknown shit for it
 good for cast ! very powerful to create struct.
 
-FONCTIONS
+## FONCTIONS
 
 work on copy of the var
 -> to modif' the var, give the ptr
--------------- 
-PRIO DES OPÉ
+
+## PRIO DES OPÉ
 
 Classic prio
 if same lvl -> read from left to right
@@ -271,7 +270,7 @@ Priorité Opérateurs Description Associativité
 10 → ||, or OU logique
 11 ← =, +=, -=, *=, /=, %= affectations droite à gauche ←
 
-OPÉ TERNAIRE
+## OPÉ TERNAIRE
 
 cout << (ptr1 == ptr2 ? "oui" : "non"); -> if
 
