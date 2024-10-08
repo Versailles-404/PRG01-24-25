@@ -128,6 +128,51 @@ Si plusieurs return -> can be used with switch et if\
 Can be used alone -> just stop the prog.\
 Return réf
 
+# 08.10.2024
+
+## Récursivité
+
+Call itself -> condition d'arrêt nécessaire pour retourner la valeur et arrêter la récursivité 
+recurse == very short in general
+
+Fibonacci -> 
+
+## Prototypes et compilation séparée
+
+Tout comme on ne peut utiliser une variable avant de l’avoir déclarée, on ne peut pas appeler une fonction avant de l’avoir déclarée\
+-> décla 1st function, before main\
+However, main == point d'entrée donc on peut faire une promesse, en déclarant avant exemple :
+```
+int f(int val); // déclaration = prototype
+
+int main() {
+int a = f(0);
+}
+
+int f(int val) { // définition
+return val + 42;
+}
+```
+On peut donner des val par défaut\
+Si on donne rien, c'est elle qui est utilisée\
+Faisable seulement sur le prototype, pas la fonction réel
+
+## Compilation séparée
+
+La séparation entre prototype et définition des fonctions permet de découper le code en plusieurs fichiers.\
+
+La compilation s’effectue en deux étapes
+    Le compilateur compile chaque fichier .cpp séparément pour créer un module objet (.o ou .obj)
+    Toutes les fonctions utilisées par un fichier .cpp doivent être déclarées une et une seule fois
+    Les fonctions utilisées par un fichier n’ont pas besoin d’y être définies
+    L’éditeur de liens regroupe ces modules objets ainsi que ceux de la bibliothèque standard dont il a besoin 
+    Toutes les fonctions utilisées doivent être définies
+    Une et une seule fois
+
+
+
+
+
 
 
 
