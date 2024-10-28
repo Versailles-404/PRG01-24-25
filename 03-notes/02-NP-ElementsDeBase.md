@@ -1,136 +1,137 @@
 # 19.09.2024
 
 ## VARIABLES
-Décla. de cont. indeter. -> possible mais pas ouf
-Si pas init. == undefined. pas zéro. Juste mémoire pur. (on laisse le truc tel quel et tu te démerde avec ce que tu trouves lol. Pas prédictible. Mais pas true rand.)
-Décla. de cont. Init. -> good 
+Décla. de cont. indeter. -> possible mais pas ouf\
+Si pas init. == undefined. pas zéro. Juste mémoire pur.\
+(on laisse le truc tel quel et tu te démerde avec ce que tu trouves lol. Pas prédictible. Mais pas true rand.)\
+Décla. de cont. Init. -> good \
 Permets un follow-up du contenu (et pour clean le truc une fois qu'on en a plus besoin ?)
 
-Décla required pour avoir SA place selon SA taille pour booké la bonne place à la bonne taille
+Décla required pour avoir SA place selon SA taille pour booké la bonne place à la bonne taille\
 -> chacun son adresse, je vis pas chez le voisin quoi et si j'ai 3 gosses, ça fit peut-être pas son endroit…
 
-Mémoire == petit bout de 8 octet (un bit) agloméré
+Mémoire == petit bout de 8 octet (un bit) agloméré\
 Réf - cours M. Deschamps
 
 # 23.09.2024
 
 ## SUITE VARIABLES
-Address format -> 0x0004 (for ex.)
-Certains type heavier than some others
--> ex: byte vs. int
+Address format -> 0x0004 (for ex.)\
+Certains type heavier than some others\
+-> ex: byte vs. int\
 Best way is the random way. So we don't choose some that are used.
 
-cin = command in (?) lecture d'info sur la console
+cin = command in (?) lecture d'info sur la console\
 literal constant (6 par ex.) truc qui est déjà dans la mémoire, il va juste le lire
 
-3 way to décla var (all the same)
-init like C -> int age =6;
-init by construct. -> int age (6);
-init. uniform -> int age{6}
+3 way to décla var (all the same)\
+init like C -> int age =6;\
+init by construct. -> int age (6);\
+init. uniform -> int age{6}\
 -> since C++11
 
-Must décla the var, the nearest of where used
--> is alive a short amount of time
--> the nearest declared so it is used only for the time needed.
-(very useful for embarqué)
-Sometimes she needs to survive so we should declare it elsewhere then above
+Must décla the var, the nearest of where used\
+-> is alive a short amount of time\
+-> the nearest declared so it is used only for the time needed.\
+(very useful for embarqué)\
+Sometimes she needs to survive so we should declare it elsewhere then above\
 The longest it is used, the more explicit and complete the var name can be
 
-id name 
--> can't start with a nb
--> need to start with a letter or a _
--> no - (lil shit looking like a _)
--> no shiny carac.
+id name \
+-> can't start with a nb\
+-> need to start with a letter or a _\
+-> no - (lil shit looking like a _)\
+-> no shiny carac.\
 -> no space.
 
 ## VARIABLES CONSTANTES
 
-init. is mandatory when declared
-const int -> constante
-Helps to dodge magic nb
+init. is mandatory when declared\
+const int -> constante\
+Helps to dodge magic nb\
 
 ## TYPES DE BASES
 
-Static and explicit
-auto -> the compil will try to guess
-Types:
-- defined
-> how stocked
-> op. possible w/
+Static and explicit\
+auto -> the compil will try to guess\
+Types:\
+- defined\
+> how stocked\
+> op. possible w/\
 
-- fundamental
-> char (carac. typo) only 8 bits 
--> ascii table associated w/
--> signed -> ful tab
--> not signed -> only + 
--> better unsigned bcs better copy+paste of the tab
-> string 
--> is a class 
--> mention honorifique bcs isn't a base type
--> not the case for random shit if we random point by not init. it
--> will stay empty
-> int
-> byte
-> double(more precise than float) - float
+- fundamental\
+> char (carac. typo) only 8 bits\ 
+-> ascii table associated w/\
+-> signed -> ful tab\
+-> not signed -> only +\ 
+-> better unsigned bcs better copy+paste of the tab\
+> string \
+-> is a class \
+-> mention honorifique bcs isn't a base type\
+-> not the case for random shit if we random point by not init. it\
+-> will stay empty\
+> int\
+> byte\
+> double(more precise than float) - float\
 > bool
 
 ## OPÉRATIONS
 
-Litéral constant
-- un carac. ''
-- chain carac. ""
-- int
-- double/float
+Litéral constant\
+- un carac. ''\
+- chain carac. ""\
+- int\
+- double/float\
 Lives there, is read only
 
-lvalue = localisation value
-- left (int age)
-- réf to a memory address
+lvalue = localisation value\
+- left (int age)\
+- réf to a memory address\
 - address is accessible by the prog.
 
-rvalue = result value
-- right (6)
+rvalue = result value\
+- right (6)\
 - not a memory address réf.
 
-Affectations = copie de la valeur de l'exp. à la droite 
-(et pas inversément. on met pas la charue avant les boeufs !)
--> int age = 10 
+Affectations = copie de la valeur de l'exp. à la droite \
+(et pas inversément. on met pas la charue avant les boeufs !)\
+-> int age = 10 \
 on va attribuer le 10 à age qui en porte sa copie pour l'avoir à cet emplacement de mémoire
 
-Arithmétique doubles
--> + - * double == classical shit behavior
--> + - * int == same as bool
--> / will yeet the fuck it out of the post ,
+Arithmétique doubles\
+-> + - * double == classical shit behavior\
+-> + - * int == same as bool\
+-> / will yeet the fuck it out of the post ,\
 -> % unlike /, will fucking keep the remaining of the div.
 
 # 24.09.2024
 
 # SUITE
 
-Modulo use case
--> RSA
--> compteur cyclique
+Modulo use case\
+-> RSA\
+-> compteur cyclique\
 -> 
 
 ## OPÉRATEUR D'AFFECTATIONS
-+=  -=  *=  %=
++=  -=  *=  %=\
 Combine opéra. d'arithmétique et d'affectations
 
 ## INCRÉMENT-DÉCRÉMENT
 ++  --
 
-préfixe-suffixe
-will incr. before if préfix
-will incr. after if suffix
-(check p.35 for ex)
+préfixe-suffixe\
+will incr. before if préfix\
+will incr. after if suffix\
+(check p.35 for ex)\
 
 ## OPÉRATEURS DE COMPARAISONS
-<  >  <=  >=  ==  !=
-Can compare -> int, double, float, char, string
+<  >  <=  >=  ==  !=\
+Can compare -> int, double, float, char, string\
 -> return bool
 
-If string compared -> lexicographique
-Classic compa. then when 1st diff. -> compa. their ASCII nb
+If string compared -> lexicographique\
+Classic compa. then when 1st diff. -> compa. their ASCII nb\
 -> then classic nb compa.
 
 ## OPÉRATEURS DE COMPARAISONS TILATÉRALE
@@ -138,11 +139,14 @@ Spaceship
 
 A<=>B -> déter. si A<B, A==B ou A>B in 1 opé.
 
+```
 (A <=> B) < 0
 (A <=> B) > 0
 (A <=> B) == 0
+```
 
 Ex:
+```
 const int x = 5, y = 3;
 
 cout << ((x <=> y) < 0); // affiche 0 (false) car x > y
@@ -152,123 +156,125 @@ cout << ((x <=> y) > 0); // affiche 1 (true) car x > y
 1st bigger than 2nd
 cout << ((x <=> y) == 0); // affiche 0 (false) car x != y
 x == y
+```
 
 => transpose the <>= instead of the spaceship
 
 ## SURCHARGE D'OPÉRATEURS
--> fonctions qui défini son comportement
+-> fonctions qui défini son comportement\
 -> apprendre à un * à multi. des string par ex.
 
 ## OPÉRATEURS LOGIQUES
 
-not ! - or || - and &&
+not ! - or || - and &&\
 
-From L to R and stops asap
-a && b -> éval. a 1st no éval. of b if a false
-a || b -> éval. a 1st, no éval of b if a true
--> allows to write w/out risks to do a 0/div
+From L to R and stops asap\
+a && b -> éval. a 1st no éval. of b if a false\
+a || b -> éval. a 1st, no éval of b if a true\
+-> allows to write w/out risks to do a 0/div\
 
 Border effect -> of non éval of the right term
 
 ## LOI DE MORGAN (the pute)
 
-!(A && B) == (!A || !B)
+!(A && B) == (!A || !B)\
 !(A || B) == (!A && !B)
 
 ## OPÉRATIONS SUR CHAR
 
-char stock ASCII int of it
+char stock ASCII int of it\
 -> use the ASCII nb to do the opé.
 
 ## STRING - CONCAT. -> +
 
-= "Hello world" -> chaîne de char == char tab
+= "Hello world" -> chaîne de char == char tab\
 = string("Hello world") -> objet
 
-Can't do "Hello" + "world" -> + de 2 tab de char
-if s put at the end -> promo of it into string
+Can't do "Hello" + "world" -> + de 2 tab de char\
+if s put at the end -> promo of it into string\
 -> then we can concat.
 
-No concat' with string + int
+No concat' with string + int\
 Nor  char + char
 
-Can't acces to a specific char with a [6] for example in a string
+Can't acces to a specific char with a [6] for example in a string\
 Bcs string is a char tab
 
 ## POINTEURS
 
-What is it -> 
-u fucking got a building. ppl in each appart (smol case)
-when u wanna know smth someone from there know. U must know where the bitch is. They have a name, so you call them. They answer you.
-"THÉODORE what the f do you know ?"
--> "
-You can tell them smth and they will remember and you can tell them to forget.
-And u can have a block of buildings and then a city, then a county, country, continent, planet, etc...
+What is it -> \
+u fucking got a building. ppl in each appart (smol case)\
+when u wanna know smth someone from there know. U must know where the bitch is.\
+They have a name, so you call them. They answer you.\
+"THÉODORE what the f do you know ?"\
+-> "234"\
+You can tell them smth and they will remember and you can tell them to forget.\
+And u can have a block of buildings and then a city, then a county, country, continent, planet, etc...\
 
 # 26.09.2024
 
-int x = 5;
--> if &x
-& récup. address of the var.
+int x = 5;\
+-> if &x (réf)\
+& récup. address of the var.\
 
-* -> *(x&)
--> déréférencement
-right in w/r on the address content
-To réattr. the address to smth else
--> *(&x) = 10 know contains the 10 instead of the 5
+* -> *(x&)\
+-> déréférencement\
+right in w/r on the address content\
+To réattr. the address to smth else\
+-> *(&x) = 10 know contains the 10 instead of the 5\
 // ! \ \ Attention si on réattr. shit d'un autre type, faut caster ! (FIREBAAAALL !!!)
 
-ptr -> var w/ address from another var
+ptr -> var w/ address from another var\
 -ggl maps préhistorique de la mémoire
 
-type de pointeur décla adding * post type pointé
+type de pointeur décla adding * post type pointé\
 when change of content of a ptr, 
 
-"wsh Théodore, il est où Bobby ?"
--> Bobby sait un chiffre
-"wsh Théodore, maintenant Jack ?"
+"wsh Théodore, il est où Bobby ?"\
+-> Bobby sait un chiffre\
+"wsh Théodore, maintenant Jack ?"\
 etc...
 
-ptr w/ const -> ptr_vers_const
-const int x= 5; val not modifiable
-int * ptr = &x; ERROR
+ptr w/ const -> ptr_vers_const\
+const int x= 5; val not modifiable\
+int * ptr = &x; ERROR\
 const int* ptr_vers_const = &x;
 
-ptr_vers_const
-const int* ptr -> no modif through ptr
-read only
+ptr_vers_const\
+const int* ptr -> no modif through ptr\
+read only\
 Contract of no modif of the var contenu in address
 
-un ptr qui ne peut pas pointer sur un autre truc == USELESS
-(bah chômage hein)
+un ptr qui ne peut pas pointer sur un autre truc == USELESS\
+(bah chômage hein)\
 Pas si useless mais QUE dans certains cas ! surtout avec les fonctions
 
-ptr can be void -> point on unknown shit for it
+ptr can be void -> point on unknown shit for it\
 good for cast ! very powerful to create struct.
 
 ## FONCTIONS
 
-work on copy of the var
+work on copy of the var\
 -> to modif' the var, give the ptr
 
 ## PRIO DES OPÉ
 
-Classic prio
-if same lvl -> read from left to right
+Classic prio\
+if same lvl -> read from left to right\
 if not, left to right but with the highest lvl
 
-Priorité Opérateurs Description Associativité
-1  →  a++, a--, a[], … unaires postfixes gauche à droite →
-2  ←  ++a, --a, +a, -a, !a, *a, &a, … unaires préfixes droite à gauche ←
-3  →  a*b, a/b, a%b multiplicatifs gauche à droite →
-4  →  a+b, a-b additifs
-5  →  <<, >> Lecture et affichage
-6  →  <=> spaceship
-7  →  <, <=, >, >= comparaison
-8  →  ==, != (in)égalité
-9  →  &&, and ET logique
-10 → ||, or OU logique
-11 ← =, +=, -=, *=, /=, %= affectations droite à gauche ←
+Priorité Opérateurs Description Associativité\
+1  →  a++, a--, a[], … unaires postfixes gauche à droite →\
+2  ←  ++a, --a, +a, -a, !a, *a, &a, … unaires préfixes droite à gauche ←\
+3  →  a*b, a/b, a%b multiplicatifs gauche à droite →\
+4  →  a+b, a-b additifs\
+5  →  <<, >> Lecture et affichage\
+6  →  <=> spaceship\
+7  →  <, <=, >, >= comparaison\
+8  →  ==, != (in)égalité\
+9  →  &&, and ET logique\
+10 → ||, or OU logique\
+11 ← =, +=, -=, *=, /=, %= affectations droite à gauche ←\
 
 ## OPÉ TERNAIRE
 

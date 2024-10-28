@@ -19,7 +19,7 @@ Flux d'entrée -> lecteur du clavier\
 
 ## If … Else
 
-```
+```cpp
 else if possible
 if(x<0){
 }
@@ -33,7 +33,7 @@ else{
 See msg de Chris
 
 id what's common first, then condition then what it returns
-```
+```cpp
 if(a<0)
 {
 b+= a;

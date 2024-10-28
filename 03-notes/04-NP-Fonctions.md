@@ -22,7 +22,7 @@ Unlike passage de valeur -> can't give another type from the func or only 1 of t
 -> danger ! can potentially write on r/unallaowed (shall not change) part of the memory !\
 EXEMPLE:
  
-```
+```cpp
 void echanger(int& a, int& b) { 
         int t;
         cout << "debut echange: a = " << a << " , b = " << b << endl;
@@ -61,7 +61,7 @@ Plus moche avec des ptr que des réf, mais ++ powerfull at least\
 Conversion des types when pass of values\
 Dolce vitàààààà
 
-```
+```cpp
 void afficher(int p1, char p2) {
 cout << "p1 = " << p1 << " , p2 = " << p2 << endl;
 }
@@ -81,9 +81,9 @@ p1 = 65 , p2 = C\
 p1 = 65 , p2 = B
 
 HOWEVER w/ réf :\
-```
+```cpp
 void f(int& p1, char& p2) {}
----------
+
 toto = 3
 tata = 6
 void f(toto, tata){
@@ -142,7 +142,7 @@ Fibonacci ->
 Tout comme on ne peut utiliser une variable avant de l’avoir déclarée, on ne peut pas appeler une fonction avant de l’avoir déclarée\
 -> décla 1st function, before main\
 However, main == point d'entrée donc on peut faire une promesse, en déclarant avant exemple :
-```
+```cpp
 int f(int val); // déclaration = prototype
 
 int main() {
@@ -159,15 +159,15 @@ Faisable seulement sur le prototype, pas la fonction réel
 
 ## Compilation séparée
 
-La séparation entre prototype et définition des fonctions permet de découper le code en plusieurs fichiers.\
+La séparation entre prototype et définition des fonctions permet de découper le code en plusieurs fichiers.
 
-La compilation s’effectue en deux étapes
-    Le compilateur compile chaque fichier .cpp séparément pour créer un module objet (.o ou .obj)
-    Toutes les fonctions utilisées par un fichier .cpp doivent être déclarées une et une seule fois
-    Les fonctions utilisées par un fichier n’ont pas besoin d’y être définies
-    L’éditeur de liens regroupe ces modules objets ainsi que ceux de la bibliothèque standard dont il a besoin 
-    Toutes les fonctions utilisées doivent être définies
-    Une et une seule fois
+La compilation s’effectue en deux étapes\
+    Le compilateur compile chaque fichier .cpp séparément pour créer un module objet (.o ou .obj)\
+    Toutes les fonctions utilisées par un fichier .cpp doivent être déclarées une et une seule fois\
+    Les fonctions utilisées par un fichier n’ont pas besoin d’y être définies\
+    L’éditeur de liens regroupe ces modules objets ainsi que ceux de la bibliothèque standard dont il a besoin\
+    Toutes les fonctions utilisées doivent être définies\
+    Une et une seule fois\
 
 
 
