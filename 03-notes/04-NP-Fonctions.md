@@ -169,34 +169,49 @@ La compilation s’effectue en deux étapes\
     Toutes les fonctions utilisées doivent être définies\
     Une et une seule fois\
 
+## Extern 
 
+Variable globale décla. ailleurs
 
+## Static
+(p.67)
 
+"Local" visible only for the func. but same life as global var\
+-> stay until the end of prog exe\
+Suivi d'utilisation d'une func. for example\
+Useful for POO
 
+*static local == in func.*
 
+global var. -> **static extern** -> global only for the entire file where declared
 
+**Allocation memory**\
+*Automatique* -> var. locales
+alive only for the bloc where decla.
 
+*Statique* -> var. globales, static & const lit.\
+alive for the whole exe\
+modèle de persistance
 
+*Dynamique*\
+créa. & del. by progmonkey w/ **new & delete**
 
+## Bonnes pratiques
 
+- If bloc of code == repeated then -> func. crea\
+-> if diff. bet similar bloc of code -> input/output
+- Approche desc. (raffinement)\
+*ui ui baguette gentleprogmonkey, so refined... Oh ! So delicate...~*\
+-> Décomp. in smaller tasks == make it easier\ 
+- Func. length\
+-> max. = 1 screen \
+-> too short == too much ++ work of struct.\
+        - Reusable
+        - Declared
+        - Defined
+        - Coded
+        - Tested
+        - Commented
+RDDCTC = Regarde DeDans & Cherche Ta Connerie\
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Be wary of Cpp Core Guidelines on the pptx
