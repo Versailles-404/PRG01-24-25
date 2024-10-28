@@ -174,7 +174,7 @@ La compilation s’effectue en deux étapes\
 Variable globale décla. ailleurs
 
 ## Static
-(p.67)
+(from - p.67)
 
 "Local" visible only for the func. but same life as global var\
 -> stay until the end of prog exe\

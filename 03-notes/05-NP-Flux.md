@@ -20,7 +20,6 @@ If closed -> still water inside\
 (source indispo)\
 
 
-
 ## 2. Sortie et entrée standard 
 
 ## 3. Lire et écrire des fichiers
