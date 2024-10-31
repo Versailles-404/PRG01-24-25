@@ -46,9 +46,9 @@ Both retournent une réf au flux concerné
 
 ## 2. Sortie et entrée standard 
 
-### <iostream>
+### <"iostream>
 
-- inclut <ostream>\
+- inclut <"ostream>\
 -> entrée standard == clavier => console\
 *can be redirected*
 
@@ -66,7 +66,7 @@ std::cin
 
 ## 3. Lire et écrire des fichiers
 
-### <fstream> - W/R files
+### <"fstream> - W/R files
 .bin & .txt\
 
 Inherit from stream previously seen but for files
@@ -84,7 +84,7 @@ Onput File stream
 **std::XXstream**\
 IN/OUT-put at the same time
 
-### <ofstream>
+### <"ofstream>
 
 Mode "OUT" par défaut:\
 si inexistant -> crée\
@@ -98,7 +98,7 @@ si file créé -> écrase le contenu etou le fichier
 *append* -> **std::ios::app** ou **ios::app**\
 Ajoute sans écraser !
 
-### <ifstream>
+### <"ifstream>
 
 To read -> **std::ifstream**
 
@@ -231,7 +231,7 @@ fstream fichier("exemple.txt", ios::in | ios::out | ios::app)\
 
 ## 4. Lire et écrire des chaines de caractères
 
-### <sstream> -> stringstream
+### <"sstream> -> stringstream
 
 Flux where W/R in string instead of console\ 
 Goes nowhere physically, still in memory, but not the same as cin
@@ -286,26 +286,236 @@ string chaine = to_string(entier) + " " + to_string(reel);
 
 ## 5. Sortie formatée
 
-### <iomanip>
+### <"iomanip>
 
 Sortie == formatable through manipulateurs:\
 2 libs : <ios> & <iomanip>
 
-En-tête Manipulateur Explication Persistance
-<ios>
+*En-tête Manipulateur Explication Persistance*\
+Ne tronque pas le contenu
+*proceeds to store back the guillotine I was taking out*
+*angry French noises*
+
+Persistance == will keep the format
+Non-persistant == will go back to normal asap
+
+<"ios>\
+Non-param - already included in <"iostream>\
+-> does not take any param.
+
 internal - Just. left sign of nb -> nombre & right val\  
 Persistant -> Oui\
-left Justifie à gauche le signe et la valeur\
+left - Just. on the left sign+nb\
 Persistant -> Oui\
-right Justifie à droite le signe et la valeur\
+right Just. on the right sign+nb\
 Persistant -> Oui
 
-<iomanip>
-setfill(char) Définit le paramètre comme caractère de remplissage Persistant -> Oui
-setw(int) Définit la largeur du champ 
+- fill on the right if **left**
+- fill on the left if **right**
+- fill bet. sign & nb **internal**
+
+<"iomanip">\
+To be included for manip. param\
+-> does take param.
+
+setfill(char) Définit le paramètre comme caractère de remplissage\ Persistant -> Oui\
+setw(int) Définit la largeur du champ\ 
 Persistant -> Non
 
-*(slide 28)*
+```cpp
+int a = -12345; int wcol = 10; cout << "0123456789" << endl; 
+
+cout << a << endl; // formatage par défaut
+
+cout << setw(wcol) << a << endl; // colonne de 10 char
+
+cout << left << setw(wcol) << a << endl; // justifié à gauche 
+
+cout << right << setw(wcol) << a << endl; // justifié à droite (choix par défaut)
+
+cout << internal << setw(wcol) << a << endl; // justifié interne
+
+cout << setw(wcol) << a << endl; // left, right, internal persistent
+
+cout << a << endl; // setw ne persiste pas. s'applique à 1 seul affichage
+
+cout << setfill('*') << setw(wcol) << a << endl; // char de remplissage autre que ' '
+
+cout << setw(wcol) << a << endl; // setfill persiste
+
+cout << "Rempli avec " << cout.fill() << endl; // .fill() retourne le char de remplissage
+```
+
+**std::flush & std::endl**
+
+*std::flush* force empty buffer to exit
+
+*std::endl* == **\n + std::flush**\
+If only retour ligne required, \n is enough
+
+**std::boolalpha**
+
+print bool... WAW PTN ;-;
+
+behaviour can be modified w/ modif. de flux
+
+*std::boolalpha* et *std::noboolalpha* == **Persistant**
+
+```cpp
+bool vrai = true, faux = false; 
+cout << vrai << " " << faux << endl; //1 0
+
+cout << boolalpha; 
+cout << vrai << " " << faux << endl; // true false
+
+cout << noboolalpha;
+cout << vrai << " " << faux << endl; // 1 0
+```
+
 ## 6. États des flux et validation des entrées
 
+### User input manag.
+
+if user input != int when int requested -> *can't eat it.*\
+var put back to 0 then try to re-read the shit. Until they get it\
+creates a fucking infinite loop
+(BAH BRAVO NILS...) so even programming language can be allergic to smth... -.-'
+
+**How to manag. input errors**
+1. Detect. error
+use the flags
+    - cin.good()
+    - cin.bad()
+    - cin.eof()
+    - cin.fail()
+2. Wipe indic.
+use cin.clear()
+3. Empty buffer
+cin.ignore(streamsize n, int delim = EOF)\
+Yeet until the n char is reached or until the delim char\
+(default == end of file)
+
+**The cooking recipe to handle the user's shit**
+```cpp
+cin >> valeur;
+if (cin.fail()) {
+cin.clear();
+cin.ignore(numeric_limits<streamsize>::max(), '\n');
+}
+```
+
+**Detect. test of user's shit can also be written this way**
+```cpp
+if (not cin.good()) ...
+
+if (not cin) ... 
+// car la conversion de cin en bool équivaut à appeler .good()
+
+if (not (cin >> valeur)) ... 
+// car l'expression (cin >> valeur) retourne cin
+```
+
 ## 7. Fonctions utiles
+
+*>> used to read std::string*\
+will passe any blank\
+smash only when char, smash is racist
+not always appropriate (WAW PTN RACISM IS NOT APPROPRIATE... -.-')
+
+```cpp
+stringstream in(" \n \t Hello, World ! ");
+
+// int i  = 0
+int i{};
+
+// init. default == empty
+string s;
+
+while (in >> s) {
+
+cout << ++i << " : " << s << endl;
+/*
+1 : Hello,
+2 : World
+3 : !
+*/
+}
+```
+```cpp
+string str;
+cin >> str; // l'utilisateur entre "James Bond"
+cout << str << endl; 
+// will print James which is not what we want...
+```
+How to patch -> *std::getline*\
+**getline(flux, str)**
+
+```cpp
+string str;
+getline(cin,str); // l'utilisateur entre "James Bond"
+cout << str << endl;
+// will print the whole shit
+```
+
+Third param to spé. char of teminaison other than *\n*
+
+```cpp
+stringstream in("James Bond/John Doe/Jack Smith");
+int i{};
+while (not in.eof()) {
+string name;
+getline(in, name, '/');
+cout << ++i << " : " << name << endl;
+}
+
+/*
+1 : James Bond
+2 : John Doe
+3 : Jack Smith
+*/
+```
+
+char not included in st but deleted from flux
+
+**istream::get(char)**\
+allows to read flux of char one by one
+
+```cpp
+stringstream in("Une ligne avec des blancs\nUne autre ligne");
+char c; 
+while (in.get(c)) { cout << c; }
+/*
+Une ligne avec des blancs
+Une autre ligne
+*/
+```
+```cpp
+stringstream in("Une ligne avec des blancs\nUne autre ligne");
+char c;
+while (in >> c) { cout << c; }
+// UneligneavecdesblancsUneautreligne
+```
+Effect to contrast with opé >> smash racist
+
+**istream::get()**\
+Return readed char, non-racist smash
+
+
+**istream::unget(), istream::putback(char)**
+*Replace the char*\
+Unget() put back la char read in flux to be read next time
+```cpp
+stringstream in("abcdefg");
+char c; in.get(c); cout << c << endl;
+in.unget();
+while(in.get(c)) cout << c;
+```
+
+putback() **replace the char litterally**\
+the char read is exchanged by the one given in param in the flux
+```cpp
+stringstream in("abcdefg");
+char c; in.get(c); cout << c << endl;
+in.putback('Z');
+while(in.get(c)) cout << c;
+```
