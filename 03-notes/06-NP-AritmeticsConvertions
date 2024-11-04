@@ -1,0 +1,199 @@
+04.11.2024
+
+# Arithmétics & Conversions
+
+## Entiers
+Entiers signés
+    - Représentation en mémoire
+    - numeric_limits
+    - Dépassement 
+Entiers non signés\
+Alias de type et entiers de taille fixe\
+Entiers littéraux\
+Entrées / sorties entières\
+
+### Entiers signé
+
+- Bit
+- Octet
+- Byte
+
+if maj like : CHAR_BIT == macro
+CHAR_BIT from <"climits>
+
+*nb* of bits *used* == *nb* int that we *can show*\
+Avec n bits -(n/8) octets - on peut représenter jusque 2^n entiers différents\
+
+n=4 -> 2^4 = 16 entiers différents
+
+Entiers positifs -> 0 à 2^n-1 -1 codé en binaire (en base 2)\
+1st bit always 0 bcs +, if 1 then entier == nég.
+
+**Complément à 2**
+
+-5 -> 5 == 0101 -> revert -> 1010 -> +1 -> 1011\
+val. nég -> val. absolue -> val bin -> revert bin -> add 1
+
+**Tailles d'entiers**
+- signed short int
+min. 16
+- signed int
+min. 16
+- signed long int
+min. 32
+- signed long long int (-> titre, selon Manu)
+min. 64
+
+*On peut également utiliser le type caractère signed char comme un entier sur 8 bits.*\
+**Le mot clé signed n’est pas optionnel dans ce cas**\
+
+*Size range:*\
+sizeof(short) <= sizeof(int) <= sizeof(long) <= sizeof(long long)
+
+**sizeof(the titre)** -> return size of the titre in bytes\
+ou\
+**sizeof** *expression/var*
+
+Example of use / / ! \ \ BEWARE OF THE ARCHI
+```cpp
+cout << "short : " << sizeof(short) * CHAR_BIT << endl;
+cout << "int : " << sizeof(int) * CHAR_BIT << endl;
+cout << "long : " << sizeof(long) * CHAR_BIT << endl;
+cout << "long long : " << sizeof(long long) * CHAR_BIT << endl;
+```
+**Windows:**\
+short : 16\
+int : 32\
+long : 32\
+long long : 64
+
+**Linux**\
+short : 16\
+int : 32\
+long : 64\
+long long : 64
+
+### Numeric limits
+type numérique est d’utiliser les méthodes de **std::numeric_limits**
+Exemples:
+```cpp
+std::numeric_limits<type>::lowest() 
+// plus petite valeur représentable 
+std::numeric_limits<type>::max() 
+// plus grande valeur représentable 
+std::numeric_limits<type>::digits 
+// nombre de bits hors bit de signe
+std::numeric_limits<type>::is_signed 
+// vrai pour les types signés
+std::numeric_limits<type>::is_integer 
+// vrai pour les types entiers
+```
+------------------------------------
+```cpp
+#include <iostream>
+using namespace std;
+int main() {
+cout << " ** signed short int ** " << endl;
+cout << "lowest : " << std::numeric_limits<short>::lowest() << endl;
+
+cout << "max : " << std::numeric_limits<short>::max() << endl;
+cout << "digits : " << std::numeric_limits<short>::digits << endl;
+
+cout << "\n ** signed int ** " << endl;
+cout << "lowest : " << std::numeric_limits<int>::lowest() << endl;
+
+cout << "max : " << std::numeric_limits<int>::max() << endl;
+cout << "digits : " << std::numeric_limits<int>::digits << endl;
+cout << "\n ** signed long long int ** " << endl;
+cout << "lowest : " << std::numeric_limits<long long>::lowest() << endl;
+
+cout << "max : " << std::numeric_limits<long long>::max() << endl;
+
+cout << "digits : " << std::numeric_limits<long long>::digits << endl;
+
+}
+
+```
+Output:\ 
+**signed short int**\ 
+lowest : -32768\
+max : 32767\
+digits : 15\
+**signed int**\ 
+lowest : -2147483648\
+max : 2147483647\
+digits : 31\
+**signed long long int**\
+lowest : -9223372036854775808\
+max : 9223372036854775807\
+digits : 63\
+
+**Overflow**\
+Result of calcul with type given cannot be represented by the type\
+    Std C++ of overflow on calcul in signed int -> undefined result
+    -> **inutilisable**
+
+```cpp
+//std::numeric_limits<int>::max() qui vaut 2'147'483'647*
+int a = 2'000'000'000;
+int b = 1'000'000'000;
+int c = a + b;
+cout << a << " + " << b << " = "
+<< c << endl;
+//2000000000 + 1000000000 = -1294967296
+```
+
+Si comportement indéfini:
+```cpp 
+//Probably in complém. 2 = -2147483648
+cout << numeric_limits<int>::max() + 1;
+```
+**CANNOT BE TRUSTED** (aiiiiiiie cooonfiaaaaaaance... mdr bien sûr la vipère...)\
+
+So you check the calcul before doing it
+- Les 2 opérandes sont positives et le résultat est\ 
+*> numeric_limits<'int>::max()*\
+- Les 2 opérandes sont négatives et le résultat est\ 
+*< numeric_limits<'int>::lowest()*
+
+Check both of the previous posibilities:
+```cpp 
+bool sum_would_overflow(int lhs, int rhs) {
+return (lhs >= 0) ?
+numeric_limits<int>::max() - lhs < rhs :
+rhs < numeric_limits<int>::lowest() - lhs;
+}
+```
+Minus and multiply can also overflow
+
+### Entiers non signés
+
+Must add **unisgned**\
+```cpp
+// unsigned char ( 8 bits ) : 0 -> 255
+cout << "unsigned char ( " << std::numeric_limits<unsigned char>::digits << " bits ) : "
+<< +std::numeric_limits<unsigned char>::lowest() << " -> "
+<< +std::numeric_limits<unsigned char>::max() << endl;
+
+// unsigned short ( 16 bits ) : 0 -> 65535
+cout << "unsigned short ( " << std::numeric_limits<unsigned short>::digits << " bits ) : "
+<< std::numeric_limits<unsigned short>::lowest() << " -> "
+<< std::numeric_limits<unsigned short>::max() << endl;
+
+// unsigned int ( 32 bits ) : 0 -> 4294967295
+cout << "unsigned int ( " << std::numeric_limits<unsigned>::digits << " bits ) : "
+<< std::numeric_limits<unsigned>::lowest() << " -> "
+<< std::numeric_limits<unsigned>::max() << endl;
+
+// unsigned long long ( 64 bits ) : 0 -> 18446744073709551615
+cout << "unsigned long long ( " << std::numeric_limits<unsigned long long>::digits << " bits ) : "
+<< std::numeric_limits<unsigned long long>::lowest() << " -> "
+<< std::numeric_limits<unsigned long long>::max() << endl;
+```
+Even if behaviour is weird af -> not an overflow...\
+if max value representable on unsigned value if +1 -> **goes back to 0**
+
+**Arithmétique modulo 2^n**
+
++ - et * are defined in *modulo 2^n*\
+
