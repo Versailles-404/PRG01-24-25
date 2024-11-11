@@ -197,3 +197,128 @@ if max value representable on unsigned value if +1 -> **goes back to 0**
 
 + - et * are defined in *modulo 2^n*\
 
+## Réels
+- In memory : IEEE 754, zéro, nombres dénormalisés, infini, NaN
+- C++ : float, double, long double
+- Input/Output -> fixed, scientific, defaultfloat, hexfloat, 
+showpoint, setprecision(n)
+- lib : <'cmath>
+
+**virgule flottante/floating point op**
+
+**base** (*b*) => int usually 2 or 10
+**sign** (*s*) => bin sign {0,1}\
+**exposant** (*e*) => int\
+**mantisse réelle** (*m*) => 1 <= *m* < *b*  -> forme normalisée for 1 pair (*m,e*) code even *r*
+
+Exemple:\
+    *r* = + 3,142 ⋅ 10^2 en base *b* = 10\
+    *r* = + 1,22734375 ⋅ 2^8 en base *b* = 2
+
+*r* = (−1)^*s*⋅ *m* ⋅ *b^e* -> bin \
+*e* via un entier pos. *E* - biais constant *B*\
+*e=E-B*     *E=e+B*\
+
+*m* via un entier pos. *M* avec *p* chiffres en base *b*\
+0<=*M* <*b^p*\
+
+*m* ~= *M*/*b^(p-1) < b* \
+-> *M = m ⋅ b^(p-1)*
+
+**approximation de la valeur** de *r*. Avec *p* chiffres en 
+base *b* pour coder la mantisse:
+*(-1)^s ⋅ M ⋅ b^(E-B-p+1)*
+
+**erreur relative** bet val codée and the *r* => € = 1/b^(p-1)
+
+### double - float
+
+**SLIDE 51-52**
+
+## Conversion entre types
+
+**Forme fonctionnelle**\
+
+```cpp
+int e = 42;
+double d1 = double(e); // forme fonctionnelle
+double d2 = (double)e; // operator de cast
+double d3 = static_cast<double>(e); // static_cast
+double d4 = e; // conversion implicite
+```
+*static cast* -> safer than classical cast\
+Require type in 1 word
+```cpp
+using ull = unsigned long long; unsigned long long u = ull(e);
+```
+
+5 signed type, 5 unsigned, 3 real types == 156 convert possible\
+Promo numeral to int\
+Convert:\
+- int to int
+- all numeral to real
+- real to int
+
+Promo:\
+*Get more room to live -> no loss*
+- char, signed char, unsigned char, signed short, ou 
+unsigned short -> int
+- bool -> int
+- 
+
+Conversion:\
+*Get less room to live == more problem to come*\
+If it doesn't fit, will yeet
+
+```cpp
+for(int s : { 100, 200, 8100, 40000, -10 }) 
+cout << setw(5) << s << " : " << setw(4) << +(unsigned char) s << "(uc) " 
+<< setw(4) << +(signed char) s << "(sc) " << setw(5) << (unsigned short) s << "(us) " 
+<< setw(6) << (signed short) s << "(ss)" << setw(11) << (unsigned int) s << "(ui)\n";
+/*
+100 : 100(uc) 100(sc) 100(us) 100(ss) 100(ui) 
+200 : 200(uc) -56(sc) 200(us) 200(ss) 200(ui) 
+8100 : 164(uc) -92(sc) 8100(us) 8100(ss) 8100(ui) 
+40000 : 64(uc) 64(sc) 40000(us) -25536(ss) 40000(ui) 
+-10 : 246(uc) -10(sc) 65526(us) -10(ss) 4294967286(ui)
+*/
+```
+
+*Int convert -> compl. to 2*
+
+signed ↔ unsigned no change of bit\
+long → court shorten left bits\
+court → long adds zeros (unsigned) or signeing bits (signed) on the left
+
+```cpp
+for(int s : { 200, 40'000, 42'000'000, -10 })
+cout << setw(8) << setfill(' ') << dec << s << " : " << hex << setfill('0')
+<< setw(8) << (signed int) s << "(si) " << setw(8) << (unsigned int) s << "(ui) "
+<< setw(4) << (signed short) s << "(ss) " << setw(4) << (unsigned short) s << "(us) "
+<< setw(16) << (signed long long) s << "(sl) " << setw(16) << (unsigned long long) s << "(ul)\n";
+
+/*
+200 : 000000c8(si) 000000c8(ui) 00c8(ss) 00c8(us) 00000000000000c8(sl) 00000000000000c8(ul)
+40000 : 00009c40(si) 00009c40(ui) 9c40(ss) 9c40(us) 0000000000009c40(sl) 0000000000009c40(ul)
+42000000 : 0280de80(si) 0280de80(ui) de80(ss) de80(us) 000000000280de80(sl) 000000000280de80(ul)
+-10 : fffffff6(si) fffffff6(ui) fff6(ss) fff6(us) fffffffffffffff6(sl) fffffffffffffff6(ul)
+*/
+```
+
+*Real to int*\
+Fraction part -> yeeted
+```cpp
+int a = 2.55;       // a = 2
+int b = -2.55;      // b = -2
+double c = 2.55;
+int d = c + 0.5;    // troncature => 3
+```
+Val not showable in int -> undefined result
+```cpp
+unsigned char a = 300;       // conversion entier → entier : a = 44
+unsigned char b = 300.;      // conversion réel → entier : b indéterminé
+                             // b = 0 (Apple LLVM 8.1)
+                             // b = 255 (Windows gcc)
+unsigned char c = int(300.); // conversion double → int → unsigned char
+                             // c = 44
+```
