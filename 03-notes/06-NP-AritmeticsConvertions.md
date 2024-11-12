@@ -322,3 +322,133 @@ unsigned char b = 300.;      // conversion réel → entier : b indéterminé
 unsigned char c = int(300.); // conversion double → int → unsigned char
                              // c = 44
 ```
+
+### Round manag.
+
+*trunc* yeet post ,\
+*round* int nearest of it for 0.5\
+*floor* int smallest or =\
+*ceil* int bigger or =
+
+```cpp
+/*
+value trunc round floor ceil
+---------------------------------
+ 2.3   2.0   2.0   2.0   3.0
+ 3.8   3.0   4.0   3.0   4.0
+ 5.5   5.0   6.0   5.0   6.0
+-2.3  -2.0  -2.0  -3.0  -2.0
+-3.8  -3.0  -4.0  -4.0  -3.0
+-5.5  -5.0  -6.0  -6.0  -5.0
+*/
+```
+
+- truncf, floorf, roundf, ceilf
+- truncl, floorl, roundl, ceill
+
+real to int can be shiny:
+```cpp
+double d = 100 * 4.35;
+cout << d << " ?= " << int(d) << endl;
+// 435 ?= 434
+```
+
+real calcul done with finished precision in its bin image\
+-> result:
+```cpp
+cout << setprecision(20) << d << endl;
+// 434.99999999999994316
+```
+
+**Implicit convert.**\
+can mix type, however BEWARE of shitty results
+
+exemple: \
+auto x = 5 * 3.14F + 5.3e-2;\
+        int  float   double\
+         |     |        |\
+     float--*---        |\
+            |           |\
+          float         |\
+            |           |\
+          double        |\
+            |_____+_____|\
+                double
+
+Eval des express. selon *priorité des opé.*
+1. Unaire (+,-)
+2. Multiplicatif (*,/,%)
+3. Additif (+,-)
+
+Unaire -> apply if needed promo numérique int\
+Express. +a & -a -> int si a == char or short signed or nah
+```cpp
+unsigned char a = 65;
+unsigned short b = 1;
+unsigned int c = 1;
+cout << a << " " << +a << " " << -a << " " << -b << " " << -c << endl;
+// A 65 -65 -1 4294967295
+```
+
+**For bin opé:**
+
+NB promo int to type char or short signed or not\
+    if opérande = long double convert the other in long double\
+    same for double and float\
+    et si bet. 2 int depend on signed or not and rank.\
+    ( signed → unsigned )\
+    ( int → long → long long )
+
+int, long ---------------------------> long\
+int, long long ----------------------> long long\
+int, unsigned int -------------------> unsigned int\
+int, unsigned long ------------------> unsigned long\
+int, unsigned long long -------------> unsigned long long\
+long, long long ---------------------> long long\
+long, unsigned long -----------------> unsigned long\
+long, unsigned long long ------------> unsigned long long\
+long long, unsigned long long -------> unsigned long long\
+unsigned int, unsigned long ---------> unsigned long\
+unsigned int, unsigned long long ----> unsigned long long\
+unsigned long, unsigned long long ---> unsigned long long
+
+If better type -> can also win\
+Depends on data model used by the pc
+
+unsigned int , long\
+unsigned int , long long\
+unsigned long, long long\
+
+If opérande signe can represent all val of unsigned opé\
+-> unsigned convert into signed one
+
+Else both are converted in unsigned type version of signed type
+
+int et long use 32 bits and long long 64 bits *Windows*
+
+unsigned int , long -> unsigned long\
+unsigned int , long long -> long long\
+unsigned long, long long -> long long\
+
+int use 32 bits, long & long long 64 bits *Linux-MacOS*
+
+```cpp
+unsigned int a = 1; long b = 2;
+unsigned long c = 1; long long d = 2;
+cout << a - b << " " << c - d << endl;
+// Linux-MacOS -> -1 18446744073709551615
+// Windows -> 4294967295 -1
+```
+
+**Beware of comparisons**\
+Opé rules for arithmétique applies also to opé de comparaison\
+Will be troublesome if comparison of int signed and unsigned one:
+```cpp
+signed int a = -1;
+unsigned int b = 1;
+cout << boolalpha;
+cout << (signed(-1) < signed(1)) << endl;       // True
+cout << (unsigned(-1) < unsigned(1)) << endl;   // False
+cout << (a < b) << endl;                        // False
+```
+
