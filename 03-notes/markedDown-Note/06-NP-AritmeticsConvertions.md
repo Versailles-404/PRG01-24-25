@@ -206,28 +206,31 @@ showpoint, setprecision(n)
 
 **virgule flottante/floating point op**
 
-**base** (*b*) => int usually 2 or 10
+![images](/img/showReel-math.png)
+
+**base** (*b*) => int usually 2 or 10\
 **sign** (*s*) => bin sign {0,1}\
 **exposant** (*e*) => int\
 **mantisse réelle** (*m*) => 1 <= *m* < *b*  -> forme normalisée for 1 pair (*m,e*) code even *r*
 
-Exemple:\
-    *r* = + 3,142 ⋅ 10^2 en base *b* = 10\
-    *r* = + 1,22734375 ⋅ 2^8 en base *b* = 2
+Exemple: for *314,2*
+
+![images](/img/reel-exemple1.png)
 
 *r* = (−1)^*s*⋅ *m* ⋅ *b^e* -> bin \
 *e* via un entier pos. *E* - biais constant *B*\
-*e=E-B*     *E=e+B*\
+
+![images](/img/entier-biais.png)
 
 *m* via un entier pos. *M* avec *p* chiffres en base *b*\
-0<=*M* <*b^p*\
+0 <= *M* < *b ^ p*\
 
-*m* ~= *M*/*b^(p-1) < b* \
--> *M = m ⋅ b^(p-1)*
+![images](/img/mantisse.png)
 
-**approximation de la valeur** de *r*. Avec *p* chiffres en 
-base *b* pour coder la mantisse:
-*(-1)^s ⋅ M ⋅ b^(E-B-p+1)*
+**approximation de la valeur** de *r*.\
+Avec *p* chiffres en base *b* pour coder la mantisse:
+
+![images](/img/mantisse2.png)
 
 **erreur relative** bet val codée and the *r* => € = 1/b^(p-1)
 
