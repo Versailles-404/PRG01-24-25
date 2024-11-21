@@ -355,3 +355,7 @@ s.erase(9, 9); // "This is a sentence."
 s.erase(13); // "This is a sen"
 s.erase(); // ""
 ```
+
+## string_view
+Ptr under batman desguise that pt on a chain of char (can see also only a part of it)\
+
