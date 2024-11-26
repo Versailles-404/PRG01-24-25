@@ -120,3 +120,113 @@ int* p = new int[n]; // tableau alloué dynamiquement
 
 They were sad to have 4 similar func. So they decided to create this\
 **span<T>**\
+Offers a view without storing it itself (only stores the address)\
+-> very good for func. param.\
+Can't manage the size, for ex. with vectors
+
+### Décla. init.
+**span<'T> nom (T* p, size_t n);**
+
+- T deduct. from p's type
+-> *span nom (T\* p, size_t n);*
+- Can init. obj. that knows its nb elements  (w/ vector || array)
+- Elements != copied when init.
+
+```cpp
+vector<int> v {1, 2, 3, 4};
+span<int> s1(&(v[0]),v.size());
+span s2(&(v[0]),v.size());
+span s3(v.data(), v.size());
+span s4(v);
+array<unsigned, 3> a {6u, 7u, 8u};
+span s5(a.data(),a.size());
+span s6(a); 
+double t[5] = {1., 2., 3., 4., 5.};
+span s7(t,5); 
+span s7(t);
+short* p = new short[3];
+span s8(p,3); 
+```
+
+### Const
+2 places so 4 possibilities\
+1. span<'T>
+2. span<'const T>
+*-> can't modif. elements by span*
+3. const span<'T>
+*-> can't change which tab span sees*
+4. const span<'const T>
+
+Only *span<'const T>* can see *const vector<'T>* or *const array<'T,n>*
+
+```cpp
+vector<int> v1;
+span<int> s11(v1);
+span<const int> s12(v1);
+const vector<int> v2;
+// span<int> s2(v2);
+span<const int> s2c(v2);
+s12 = v2; // change le tableau vu
+const span<int> s13(v1);
+// s13 = v1;
+// les lignes commentées ne compilent pas
+```
+
+### Pass of param.
+- Usually used to pass a tab to a func.
+- Like a val
+- Func. !modif. val of elements must use -> *span<'const T>*
+- Func. modif val of elements -> *span<'T>*
+- Func !modif nb of elements
+
+```cpp
+void display(span<const int> s) {
+cout << '[';
+for (int e : s)
+cout << e << ',';
+cout << "\b]\n";
+}
+void fill(span<int> s, int val) {
+for (int& e : s)
+e = val;
+}
+
+vector<int> v{1, 2, 3, 4};
+const array<int, 3> a{5, 6, 7};
+display(v);  // [1,2,3,4]
+display(a);  // [5,6,7]
+fill(v, 42); // [42,42,42,42]
+display(v);
+```
+
+### Methods
+Can def. span that sees only a part of the tab. from a pos. (index)
+```cpp
+vector<int> v{1, 2, 3, 4, 5, 6};
+span s1(&v[1],2); // s1 voit {2, 3}
+```
+
+*s.subspan(pos,len)*
+```cpp
+span s2 = span(v).subspan(1,2);
+// s1 et s2 voient les même élément
+```
+
+*s.first(len)*
+```cpp
+span s3(&v[0],3);
+span s4 = span(v).first(3);
+// s3 et s4 voient les même éléments
+```
+
+*s.last(len)*
+```cpp
+span s6(&v[v.size()-2],2);
+span s7 = span(v).last(2);
+// s6 et s7 voient les même éléments
+```
+
+## Multi-dimensional tab
+
+## Bubble tri
+
