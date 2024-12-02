@@ -467,3 +467,113 @@ template <typename T> void f(vector<T>) {...} // 3
 template <typename T> void f(vector<vector<T>>) {...} // 4
 ```
 ![img](/img/Ensembles.png)
+
+### Résolution
+
+```cpp
+template <typename T> 
+int f(T) { return 1; }
+
+template <typename T> 
+int f(vector<T>) { return 2; }
+
+int main() {
+    vector<int> v(42);
+    cout << f<vector<int>>(v); // 1
+    // seule appelable si T = vector<int>
+    cout << f<int>(v); // 2
+    // seule appelable si T = int
+    cout << f(v); // 2
+    // les 2 fonctions sont appelables, 
+    // mais P2 est plus spécialisé que P1
+}
+```
+
+**Ordre partiel + spé 1 param**
+
+```cpp
+template <typename T> void f(T) {...} // 1
+template <typename T> void f(T*) {...} // 2
+template <typename T> void f(vector<T>) {...} // 3
+template <typename T> void f(vector<vector<T>>) {...} // 4
+```
+![img](/img/ordrePartiel-plusSpe.png)
+
+*f1* ++spé than *f2* == effective params ensemble are able to call *f1*\
+-> *f1* == sous-ensemble de *f2*\
+*2,3,4* ++ spé than *1* bcs all func. can call also *1*\
+*4* ++ spé than *3* bcs any func can also call *3*\
+no order ++ spé bet. *2* and *3* nor bet. *2* and *4*\
+-> no issue in resolution if n == void
+
+**Ordre partiel w/ multiple params**
+
+```cpp
+template <typename T, typename U> void f(T, U) {...} // 1
+template <typename T, typename U> void f(T*, U) {...} // 2
+template <typename T> void f(T, T) {...} // 3
+template <typename T> void f(T, int) {...} // 4
+```
+![img](/img/ordrePartiel-plusSpe-multiParam.png)
+
+When f has multiple param., ensemble not included in each other can have a void n\
+n == ambiguity place
+
+Exemple: 
+- **f(char*, char*)** 
+Can call 1, 2 or 3\
+2 and 3 ++ spé than 1, but no order bet. them\
+ambiguity call
+- **f(float*, short)**\
+Can call 1 or 2\
+2 ++spé than 1\
+So 1 is called
+
+**Func. not generic**
+
+```cpp
+template <typename T, typename U> void f(T, U) {...} // 1
+template <typename T, typename U> void f(T*, U) {...} // 2
+template <typename T> void f(T, T) {...} // 3
+template <typename T> void f(T, int) {...} // 4
+void f(int, int) {...} // 5
+void f(int*, float) {...} // 6
+```
+![img](/img/notGeneric.png)
+
+Can add not-generic to Venn diagramme\
+Not généric func. is always ++spé than a généric one\
+Can solve ambiguity\
+-> f(int, int) call 5\
+-> without func.5 there would be ambiguity bet 3 & 4
+
+### Algo general to resolve
+
+1. State the list of viable func. (generic or not) taking in account:\
+    1.1. Func. name + (namespace visibility)\
+* If func. call is typef<>(...) or f<'type(s)>(...), only generic ones are called\
+    1.2. Nb Param (exact or bigger with params by default)\
+    1.3. Exact type or convert. possible for params not-généric\
+    1.4. Déduc. args for generic. param not explicitely spé.
+
+2. If multiple candidates, determ. if one "better than the other"\
+    2.1. In the sense of the algo resolving the overload in chap. 4\
+        2.1.1. Individually for each param : exact type > promo > ajust.\
+        2.1.2. Intersec. of params choice\
+    2.2. If 2.1 dertem. not order bet. 2 func. in order partial ++spé while knowing a func. not généric is ++spé than généric func.\
+If algo select one unique func. -> get called\
+If 0 or multiple choice -> Théodore unhappy
+
+*Exemples from slide 43 to 50*
+
+
+
+
+
+
+
+
+
+
+
+Costa Martins Guilherme de Jesus
