@@ -566,14 +566,51 @@ If 0 or multiple choice -> Théodore unhappy
 
 *Exemples from slide 43 to 50*
 
+### Specialisation (à la mano)
+Can spé a generic func. for a generic arg given\
+- must use *template<'>*
+- following func. where all generic args are specified 
+
+```cpp
+template <typename T>
+bool estInt(T) {
+    return false;
+}
+
+template<>
+bool estInt<int>(int) {
+    return true;
+}
+
+int main() {
+    cout << boolalpha
+    << estInt(1)   // true
+    << estInt('a') // false
+    << estInt(1.); // false
+}
+```
+
+**Deduc. to def.** - Slide 52
+
+**Spé w/ overload**\
+When déduc. des args d'un spé, same rules as for instanciation when overload\
+
+```cpp
+template <typename T> void f(T t) { cout << 1; } 
+template <typename T> void f(T* t) { cout << 2; } // surcharge
+template<> void f<>(int* t) { cout << 3; } // spécialisation
+```
+
+func. 3 spé w/ overload 2 type int* that can call 1 w/ T=int* or 2 T=int but overload 2 bcs ++ spé
+
+BEWARY OF THE ORDER\
+Look below: 
+func. 3 spé overload 1 and overload 2 not décla. when func. 3 déf.
+```cpp
+template <typename T> void f(T t) { cout << 1; } 
+template<> void f<>(int* t) { cout << 3; } // spécialisation 
+template <typename T> void f(T* t) { cout << 2; } // surcharge
+```
 
 
 
-
-
-
-
-
-
-
-Costa Martins Guilherme de Jesus
